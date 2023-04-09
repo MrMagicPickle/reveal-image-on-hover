@@ -171,13 +171,12 @@ function ImagePlane() {
       // float noiseValue = fnoise(edgeDist * 10.0) * 0.1;
       // opacity = smoothstep(0.5 - noiseValue, 0.5 + noiseValue, edgeDist);
 
-      float r = 0.2;
 
-
-      float edgeDist = distance((vUv), uMouseUv) * 0.8;
+      float edgeDist = distance((vUv), uMouseUv) * 0.9;
       edgeDist = smoothstep(0.0, 0.7, edgeDist);
       float xNoise = max(0., cnoise(vec3(edgeDist, edgeDist, uTime)));
-      xNoise = max(0.2, cnoise(vec3(vUv, edgeDist * 2.)));
+      xNoise = max(0.2, cnoise(vec3(edgeDist * 10., 10. * ((vUv.y + vUv.x ) / 2.), uTime * 0.5)));
+      // xNoise = max(0.2, cnoise(vec3(vUv, edgeDist * 2.)));
       // xNoise = max(0., cnoise(vec3(edgeDist, vUv.x, vUv.y* 5.)));
       edgeDist = edgeDist - xNoise;
       edgeDist = smoothstep(0.0, 0.2, edgeDist);
